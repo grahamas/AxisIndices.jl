@@ -403,7 +403,7 @@ function reduce_axes(old_axes::Tuple{Vararg{Any,N}}, new_axes::Tuple, dims) wher
             if is_indices_axis(axis)
                 unsafe_reconstruct(axis, getfield(new_axes, i))
             else
-                unsafe_reconstruct(axis, set_length(keys(axis), 1), getfield(new_axes, i))
+                unsafe_reconstruct(axis, keys(axis)[[i]], getfield(new_axes, i))
             end
         else
             assign_indices(getfield(old_axes, i), getfield(new_axes, i))
